@@ -36,11 +36,11 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 # cacheSolve is a function that will first check to see if a solved inverse
-# matrix has been cached.  
-# If 'im' is cached, (!is.null(im) is TRUE) the function will grab the matrix
-# from the cache and stop with the use of return(im).
+# matrix has been cached.  If 'im' is cached, (!is.null(im) is TRUE) the 
+# function will grab the matrix from the cache and stop with return(im).
 # If 'im' is NULL - a solved 'im' does not exist (!is.null(im) is FALSE) then
-## 'im' will be calculated and cached to the parent environment
+# 'im' will be calculated and cached to the parent environment.
+
 
 cacheSolve <- function(x, ...) {
      im <- x$getinvMat()                     # call getinvMat to retreive 'im'
@@ -50,7 +50,7 @@ cacheSolve <- function(x, ...) {
      }
                                              # if 'im' is NULL;
      data <- x$get()                         # use 'get' to load new matrix
-     im <- solve(data, ...)                  # invert matrix using solve()
+     im <- solve(data)                       # invert matrix using solve()
      x$setinvMat(im)                         # cache 'im' to parent env
      im
 }
